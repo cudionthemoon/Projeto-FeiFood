@@ -1,7 +1,7 @@
 package Controller;
 
 import dao.AlimentoDAO;
-import Model.Alimento;
+import model.Alimento;
 import java.util.List;
 
 public class ControllerAlimento {

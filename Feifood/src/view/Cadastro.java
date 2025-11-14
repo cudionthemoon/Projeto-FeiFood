@@ -122,8 +122,6 @@ public class Cadastro extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jLabel1.getAccessibleContext().setAccessibleName("Cadastre-se!");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 

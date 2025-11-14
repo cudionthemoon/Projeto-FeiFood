@@ -105,9 +105,6 @@
         <Property name="text" type="java.lang.String" value="Cadastre-se!"/>
         <Property name="alignmentY" type="float" value="0.0"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Cadastre-se!"/>
-      </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JButton" name="btnVoltar">
       <Properties>

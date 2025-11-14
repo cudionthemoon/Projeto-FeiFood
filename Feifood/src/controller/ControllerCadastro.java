@@ -10,7 +10,7 @@ public class ControllerCadastro {
 
     public ControllerCadastro() {
         try {
-            this.dao = new AlunoDAO(); // abre conexão via Conexao().getConnection()
+            this.dao = new AlunoDAO(); 
         } catch (SQLException e) {
             throw new RuntimeException("Falha ao abrir conexão: " + e.getMessage(), e);
         }

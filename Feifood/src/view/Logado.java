@@ -1,29 +1,32 @@
-
 package view;
 
 import Controller.ControllerAlimento;
-import Model.Alimento;
+import model.Alimento;
+import model.PedidoItem;         
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import java.text.NumberFormat;
-import java.util.Locale;
-
-
+import javax.swing.ListSelectionModel;
+import javax.swing.JOptionPane;
 
 public class Logado extends javax.swing.JFrame {
 
     private ControllerAlimento controller;
-    
+    private List<Alimento> listaAlimentos;
+
     public Logado() {
         initComponents();
-        
+
         this.controller = new ControllerAlimento();
+
+        tbAlimento.setSelectionMode(
+            ListSelectionModel.MULTIPLE_INTERVAL_SELECTION
+        );
+
         preencherComboTipo();
         carregarTabelaTodos();
     }
-    
-    
+
     private void preencherComboTipo() {
         cbTipo.removeAllItems();
         cbTipo.addItem("Todos");
@@ -32,38 +35,29 @@ public class Logado extends javax.swing.JFrame {
         cbTipo.addItem("Bebida");
     }
 
-   
     private void carregarTabelaTodos() {
-        List<Alimento> lista = controller.listarTodos();
-        preencherTabela(lista);
+        this.listaAlimentos = controller.listarTodos();
+        preencherTabela(this.listaAlimentos);
     }
 
-    
     private void preencherTabela(List<Alimento> lista) {
-    DefaultTableModel modelo = (DefaultTableModel) tbAlimento.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tbAlimento.getModel();
 
-    modelo.setRowCount(0);
-    modelo.setColumnCount(0);
+        modelo.setRowCount(0);
 
-    modelo.addColumn("ID");
-    modelo.addColumn("Nome");
-    modelo.addColumn("Categoria");
-    modelo.addColumn("Preço");
-
-    for (Alimento a : lista) {
-
-        
-        String precoFormatado = "R$ " +
+        for (Alimento a : lista) {
+            String precoFormatado = "R$ " +
                 String.format("%.2f", a.getPreco()).replace('.', ',');
 
-        modelo.addRow(new Object[]{
-            a.getId(),
-            a.getNome(),
-            a.getTipo(),        
-            precoFormatado
-        });
+            modelo.addRow(new Object[]{
+                a.getId(),
+                a.getNome(),
+                a.getTipo(),
+                precoFormatado
+            });
+        }
     }
-}
+
 
 
     
@@ -86,13 +80,13 @@ public class Logado extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbAlimento = new javax.swing.JTable();
         btnLimpa = new javax.swing.JButton();
-        btnVoltar = new javax.swing.JButton();
+        btnContinuar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Bém Vindo!");
+        jLabel1.setText("Bém Vindo ao FeiFood! ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Tipo:");
@@ -144,11 +138,11 @@ public class Logado extends javax.swing.JFrame {
             }
         });
 
-        btnVoltar.setText("Voltar");
-        btnVoltar.setPreferredSize(new java.awt.Dimension(102, 23));
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+        btnContinuar.setText("Continuar");
+        btnContinuar.setPreferredSize(new java.awt.Dimension(102, 23));
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
+                btnContinuarActionPerformed(evt);
             }
         });
 
@@ -166,9 +160,9 @@ public class Logado extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(60, 60, 60)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(21, Short.MAX_VALUE)
@@ -187,7 +181,7 @@ public class Logado extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(btnLimpa)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(16, 16, 16))
         );
@@ -210,8 +204,8 @@ public class Logado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpa)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 140, Short.MAX_VALUE))
+                    .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
@@ -241,9 +235,10 @@ public class Logado extends javax.swing.JFrame {
                 filtrada.add(a);
             }
         }
+
         lista = filtrada;
     }
-
+    this.listaAlimentos = lista;
     preencherTabela(lista);
     }//GEN-LAST:event_btnFiltrarActionPerformed
 
@@ -257,12 +252,30 @@ public class Logado extends javax.swing.JFrame {
     carregarTabelaTodos();
     }//GEN-LAST:event_btnLimpaActionPerformed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        Login telaLogin = new Login();
-    telaLogin.setLocationRelativeTo(this);
-    telaLogin.setVisible(true);
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+       int[] linhas = tbAlimento.getSelectedRows();
+
+    if (linhas.length == 0) {
+        JOptionPane.showMessageDialog(this,
+                "Selecione pelo menos um item do cardápio.");
+        return;
+    }
+
+    List<PedidoItem> itensPedido = new ArrayList<>();
+
+    for (int linha : linhas) {
+        // usa a listaAlimentos que a gente está mantendo atualizada
+        Alimento a = listaAlimentos.get(linha);
+
+        PedidoItem item = new PedidoItem(a, 1, a.getPreco());
+        itensPedido.add(item);
+    }
+
+    TelaPedido tela = new TelaPedido(itensPedido);
+    tela.setLocationRelativeTo(this);
+    tela.setVisible(true);
     this.dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
+    }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
@@ -304,9 +317,9 @@ public class Logado extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnLimpa;
-    private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<String> cbTipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;

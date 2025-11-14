@@ -17,7 +17,6 @@ public class ControllerCategoria {
         }
     }
 
-    // validação simples (nível 3º semestre)
     public String validarNome(String nome) {
         if (nome == null || nome.trim().isEmpty()) return "Informe o nome da categoria.";
         if (nome.trim().length() < 3) return "Nome muito curto (mínimo 3).";
@@ -25,7 +24,6 @@ public class ControllerCategoria {
         return "OK";
     }
 
-    // cadastrar categoria no banco
     public String cadastrar(String nome) {
         String v = validarNome(nome);
         if (!"OK".equals(v)) return v;
@@ -41,7 +39,6 @@ public class ControllerCategoria {
         }
     }
 
-    // listar para popular JTable/combos depois
     public List<Categoria> listarTodas() {
         try {
             return dao.listarTodos();
