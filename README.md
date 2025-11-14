@@ -66,4 +66,3 @@ O banco de dados foi construído utilizando **PostgreSQL**. Ele contém as segui
 
 **Lucas Gasparetto Pimentel**  
 R.A. 22.124.025-2  
-Faculdade de Engenharia Industrial (FEI)
