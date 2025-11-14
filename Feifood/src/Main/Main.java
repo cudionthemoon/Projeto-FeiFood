@@ -1,0 +1,14 @@
+package Main;
+
+import view.Login;
+
+
+public class Main {
+
+    
+    public static void main(String[] args) {
+        Login tela1 = new Login();
+        tela1.setVisible (true);
+    }
+    
+}

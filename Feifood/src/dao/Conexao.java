@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
 import java.sql.Connection;
@@ -9,11 +5,32 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
-    public Connection getConnection() throws SQLException{
-        Connection conexao = DriverManager.getConnection
-        ("jdbc:postgresql://localhost:5432/Alunos",
-        "postgres",
-        "Lunaloka2020");
-    return conexao;    
+
+    
+private static final String URL = "jdbc:postgresql://localhost:5432/Alunos";
+ 
+    private static final String USER = "postgres";          
+    private static final String PASSWORD = "Lunaloka2020"; 
+
+    public static Connection getConexao() {
+        Connection con = null;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            con = DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return con;
     }
+    
+    
+    public Connection getConnection() {
+    return getConexao();
+}
+
+    public static Connection conectar() {
+    return getConexao();
+}
 }

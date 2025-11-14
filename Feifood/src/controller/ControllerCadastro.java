@@ -1,16 +1,16 @@
 package controller;
 
-import dao.Alunodao;
+import dao.AlunoDAO;
 import java.sql.SQLException;
 import java.util.Arrays;
 
 public class ControllerCadastro {
 
-    private final Alunodao dao;
+    private final AlunoDAO dao;
 
     public ControllerCadastro() {
         try {
-            this.dao = new Alunodao(); // abre conexão via Conexao().getConnection()
+            this.dao = new AlunoDAO(); // abre conexão via Conexao().getConnection()
         } catch (SQLException e) {
             throw new RuntimeException("Falha ao abrir conexão: " + e.getMessage(), e);
         }
