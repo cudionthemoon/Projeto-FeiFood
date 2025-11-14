@@ -71,15 +71,7 @@ CREATE TABLE tbalimento (
 );
 ```
 
-## 4. Tecnologias Utilizadas
-- Java
-- Java Swing
-- PostgreSQL
-- JDBC
-- NetBeans
-- MVC
-
-## 5. Fluxo do Sistema
+## 4. Fluxo do Sistema
 1. Login
 2. Cardápio
 3. Seleção dos alimentos
@@ -89,6 +81,6 @@ CREATE TABLE tbalimento (
 7. Avaliação
 8. Volta ao cardápio
 
-## 7. Autor
+## 5. Autor
 **Lucas Gasparetto Pimentel** 
 R.A.: 22.124.025-2
