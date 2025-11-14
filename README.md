@@ -1,86 +1,69 @@
+
 # FeiFood – Sistema de Cardápio e Pedidos
 
-Projeto desenvolvido para a disciplina de Programação Orientada a Objetos (3º semestre – FEI). O objetivo foi criar um sistema simples de cardápio e pedidos utilizando Java, Swing, PostgreSQL e o padrão MVC.
+Projeto desenvolvido para a disciplina de Programação Orientada a Objetos (3º semestre – FEI). O objetivo deste projeto foi criar um sistema simples para gerenciar pedidos de um restaurante, utilizando Java, Swing, PostgreSQL e o padrão de projeto MVC (Model-View-Controller).
 
-## 1. O que foi feito
+---
 
-### Tela de Login
-- Usuário informa login e senha.
-- Validação feita no PostgreSQL (tbaluno).
-- Acesso ao cardápio caso as credenciais estejam corretas.
+## 1. Descrição do Projeto
 
-### Tela de Cardápio
-- Lista todos os alimentos cadastrados.
-- Filtro por categoria.
-- Busca por nome.
-- Botão para continuar e montar o pedido.
+O **FeiFood** é um sistema de pedidos para restaurantes. O fluxo do sistema permite que o usuário faça login, visualize os itens disponíveis no cardápio, adicione itens ao pedido, veja o valor total, faça o pagamento e, por fim, avalie o serviço com uma nota de 0 a 5 estrelas.
 
-### Tela de Pedido
-- Mostra ID do pedido gerado.
-- Data e hora do pedido.
-- Tabela com itens escolhidos.
-- Spinner para quantidade.
-- Cálculo automático de subtotal e total.
-- Remover itens.
-- Botão “Realizar Pedido”.
+### Funcionalidades Principais:
+- **Login**: O usuário entra com seu nome de usuário e senha para acessar o sistema.
+- **Cardápio**: Exibe os itens disponíveis (como comidas, bebidas, etc.). O usuário pode filtrar por categoria e buscar por nome.
+- **Pedido**: O usuário pode adicionar itens ao pedido, ajustar a quantidade e ver o valor total.
+- **Avaliação**: Após realizar o pedido, o usuário pode dar uma avaliação de 0 a 5 estrelas.
 
-### Tela de Avaliação
-- Exibe ID do pedido.
-- Usuário escolhe de 0 a 5 estrelas.
-- Mensagem de confirmação.
-- Retorno ao cardápio.
+---
 
-## 2. Estrutura do Projeto (MVC)
+## 2. Tecnologias Utilizadas
 
-### Model
-- Alimento
-- PedidoItem
+- **Java**: Para o desenvolvimento do sistema.
+- **Swing**: Para a criação das interfaces gráficas.
+- **PostgreSQL**: Como banco de dados para armazenar as informações dos alimentos, usuários e pedidos.
+- **JDBC**: Para conectar o Java ao PostgreSQL.
+- **NetBeans**: IDE utilizada para o desenvolvimento do projeto.
 
-### DAO
-- Conexao
-- AlimentoDAO
+---
 
-### View
-- Login
-- Cardápio
-- Pedido
-- Avaliação
+## 3. Estrutura do Projeto
 
-### Controller
-- ControllerAlimento
+- **Model**: Contém as classes que representam as entidades do sistema, como `Alimento` e `PedidoItem`.
+- **DAO (Data Access Object)**: Responsável pela comunicação com o banco de dados (criação, leitura, atualização e remoção de dados).
+- **View**: Contém as interfaces gráficas, representadas pelas telas (Login, Cardápio, Pedido, Avaliação).
+- **Controller**: Controla a lógica de negócios, interagindo entre o modelo e a visão.
 
-## 3. Banco de Dados
+---
 
-### Tabela tbaluno
-```
-CREATE TABLE tbaluno (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(100),
-    usuario VARCHAR(50) UNIQUE NOT NULL,
-    senha VARCHAR(50) NOT NULL
-);
-```
+## 4. Banco de Dados
 
-### Tabela tbalimento
-```
-CREATE TABLE tbalimento (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(100),
-    tipo VARCHAR(20),
-    preco DECIMAL(10,2)
-);
-```
+O banco de dados foi construído utilizando **PostgreSQL**. Ele contém as seguintes tabelas principais:
 
-## 4. Fluxo do Sistema
-1. Login
-2. Cardápio
-3. Seleção dos alimentos
-4. Tela de pedido
-5. Ajuste de quantidades e total
-6. Realizar Pedido
-7. Avaliação
-8. Volta ao cardápio
+- **tbaluno**: Para armazenar as informações dos usuários.
+- **tbalimento**: Para armazenar as informações dos itens do cardápio (alimentos e bebidas).
 
-## 5. Autor
-**Lucas Gasparetto Pimentel** 
-R.A.: 22.124.025-2
+---
+
+## 5. Como Rodar o Projeto
+
+### **Pré-requisitos**:
+- **JDK 8 ou superior**
+- **PostgreSQL** instalado e configurado.
+
+### **Passos para executar**:
+
+1. Faça o clone ou baixe o repositório para sua máquina local.
+2. Importe o projeto no NetBeans.
+3. Configure a conexão com o banco de dados **PostgreSQL**:
+    - Crie um banco de dados chamado `Alunos.sql`.
+    - Execute o arquivo `Alunos.sql.sql` para criar as tabelas e inserir dados de exemplo.
+4. Execute o projeto no NetBeans.
+
+---
+
+## 6. Autor
+
+**Lucas Gasparetto Pimentel**  
+R.A. 22.124.025-2  
+Faculdade de Engenharia Industrial (FEI)
