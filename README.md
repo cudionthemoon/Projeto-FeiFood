@@ -99,6 +99,5 @@ CREATE TABLE tbalimento (
 - Estruturação de DAO para SQL
 
 ## 7. Autor
-**Vinícius Vasconcellos**  
-Ciência da Computação – FEI  
-2025
+**Lucas Gasparetto Pimentel** 
+R.A.: 22.124.025-2
