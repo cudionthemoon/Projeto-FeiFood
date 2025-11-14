@@ -89,15 +89,6 @@ CREATE TABLE tbalimento (
 7. Avaliação
 8. Volta ao cardápio
 
-## 6. Aprendizados
-- Conexão Java + PostgreSQL
-- Uso de JTable, JComboBox, JSpinner e JOptionPane
-- Organização usando MVC
-- Atualização dinâmica de tabelas
-- Navegação entre telas no Swing
-- Formatação de valores em moeda
-- Estruturação de DAO para SQL
-
 ## 7. Autor
 **Lucas Gasparetto Pimentel** 
 R.A.: 22.124.025-2
